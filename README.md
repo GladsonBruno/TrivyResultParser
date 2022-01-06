@@ -1,6 +1,6 @@
 ## Trivy Result Parser
 ### Visão Geral
-Esta é uma ferramenta interna criada para realizar o parse do resultado de relatórios gerados pelo Trivy referentes ao scan de vulnerabilidades de containeres e vulnerabilidades de arquivos de configuração.
+Esta é uma ferramenta interna criada para realizar o parse do resultado de relatórios gerados pelo Trivy referentes ao scan de vulnerabilidades de containeres e vulnerabilidades de arquivos de configuração. 
 
 
 

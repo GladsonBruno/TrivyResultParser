@@ -29,6 +29,38 @@ trivy_result_parser --report-file=./report.json --low=20 --critical=0 [--option=
 
 
 
+### Execução local da ferramenta
+
+Exemplo de execução local da ferramenta:
+
+```sh
+npm install
+node trivy_result_parser.js --report-file=./report.json --low=20 [--option=number]
+node trivy_result_parser.js --report-file=./report.json --low=20 --critical=0 [--option=number]
+```
+
+
+
+Exemplo de build local da ferramenta:
+
+```sh
+npm run build
+```
+
+Após rodar o build serão gerados 3 binários no diretório corrente da aplicação, sendo eles:
+
+```sh
+trivy_result_parser-linux
+trivy_result_parser-macos
+trivy_result_parser-win.exe
+```
+
+
+
+
+
+
+
 ### Exemplo de uso do Trivy para geração dos reports lidos pelo utilitário
 Scan de vulnerabilidades em imagens docker:
 ```sh

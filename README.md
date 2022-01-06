@@ -12,12 +12,20 @@ trivy_result_parser --report-file=./report.json --low=20 --critical=0 [--option=
 ```
 
 **OPTIONS**:
-**--report-file**   Path de um arquivo JSON contendo o report de vulnerabilidades gerado pelo Trivy. Podendo ser o report de vulnerabilidades de imagens docker ou reporte de vulnerabilidades de arquivos de configuração .YML | .YAML
-**--unknown**       Número de vulnerabilidades do tipo unknown aceitas.
-**--low**           Número de vulnerabilidades do tipo low aceitas.
-**--medium**        Número de vulnerabilidades do tipo medium aceitas.
-**--high**          Número de vulnerabilidades do tipo high aceitas.
-**--critical**      Número de vulnerabilidades do tipo critical aceitas.
+
+```sh
+--report-file   Path de um arquivo JSON contendo o report de vulnerabilidades gerado pelo Trivy. Podendo ser o report de vulnerabilidades de imagens docker ou reporte de vulnerabilidades de arquivos de configuração .YML | .YAML
+
+--unknown       Número de vulnerabilidades do tipo unknown aceitas.
+
+--low           Número de vulnerabilidades do tipo low aceitas.
+
+--medium        Número de vulnerabilidades do tipo medium aceitas.
+
+--high          Número de vulnerabilidades do tipo high aceitas.
+
+--critical      Número de vulnerabilidades do tipo critical aceitas.
+```
 
 
 

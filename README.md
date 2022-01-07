@@ -47,7 +47,7 @@ Exemplo de build local da ferramenta:
 npm run build
 ```
 
-Após rodar o build serão gerados 3 binários no diretório corrente da aplicação, sendo eles:
+Após rodar o build serão gerados 3 binários no diretório ./dist da aplicação, sendo eles:
 
 ```sh
 trivy_result_parser-linux

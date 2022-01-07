@@ -4,7 +4,7 @@
   "description": "Script node js com o objetivo de analisar um arquivo de report json do trivy e aprovar ou não a análise",
   "main": "trivy_result_parser.js",
   "scripts": {
-    "build": "pkg --compress GZip trivy_result_parser.js",
+    "build": "pkg --compress GZip trivy_result_parser.js --out-path dist",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "gladson.santos-terceiro@cea.com.br",

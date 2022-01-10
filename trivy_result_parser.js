@@ -129,7 +129,7 @@ fs.readFile(reportFile, 'utf8' , (err, data) => {
     var reportSuccess = true;
 
     for (var key in limit) {
-        if (limit[key]) {
+        if (limit[key] !== undefined) {
             const limitValue = parseInt(limit[key])
             if (isNaN(limitValue)) {
                 console.log('\x1b[33m%s\x1b[0m', `O valor do argumento --${key} deve ser um número inteiro positivo. O mesmo será ignorado!`);

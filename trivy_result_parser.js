@@ -6,18 +6,19 @@ const fs = require('fs');
 function printHelp () {
     console.log(`
     Exemplos de uso:
-    trivy_result_parser --report-file=./report.json --low=20 [--option=number]
-    trivy_result_parser --report-file=./report.json --low=20 --critical=0 [--option=number]
+    trivy_result_parser --report-file=./report.json --low=20 [--option=number] --false_positives=CVE-123,KSV123
+    trivy_result_parser --report-file=./report.json --low=20 --critical=0 [--option=number] --false_positives=CVE-123,KSV123
 
     OPTIONS:
     --report-file   Path de um arquivo JSON contendo o report de vulnerabilidades gerado pelo Trivy.
                     Podendo ser o report de vulnerabilidades de imagens docker ou reporte de 
                     vulnerabilidades de arquivos de configuração .YML | .YAML
-    --unknown       Número de vulnerabilidades do tipo unknown aceitas.
-    --low           Número de vulnerabilidades do tipo low aceitas.
-    --medium        Número de vulnerabilidades do tipo medium aceitas.
-    --high          Número de vulnerabilidades do tipo high aceitas.
-    --critical      Número de vulnerabilidades do tipo critical aceitas.
+    --unknown           Número de vulnerabilidades do tipo unknown aceitas.
+    --low               Número de vulnerabilidades do tipo low aceitas.
+    --medium            Número de vulnerabilidades do tipo medium aceitas.
+    --high              Número de vulnerabilidades do tipo high aceitas.
+    --critical          Número de vulnerabilidades do tipo critical aceitas.
+    --false_positives   Lista de falso positivos separados por virgulas. Deve conter o VulnerabilityID ou o MissConfiguration ID a ser considerado um falso positivo.
     `)
 }
 
@@ -31,6 +32,13 @@ const limit = {
     medium: args.medium,
     high: args.high,
     critical: args.critical
+}
+
+// Falso positivos
+const false_positives = args.false_positives;
+var false_positives_list = null;
+if (false_positives != undefined) {
+    false_positives_list = false_positives.split(",")
 }
 
 if (reportFile == undefined || (Object.values(limit).every(x => x === undefined))) {
@@ -85,6 +93,21 @@ fs.readFile(reportFile, 'utf8' , (err, data) => {
         if (keyusada in currentResults) {
             for(var j in currentResults[keyusada]) {
                 var currentVulnerabilitie = currentResults[keyusada][j]
+
+                // Iniciando tratamento para falso positivos
+                if (false_positives_list !== null) {
+                    if (currentVulnerabilitie.VulnerabilityID !== undefined) {
+                        if (false_positives_list.includes(currentVulnerabilitie.VulnerabilityID)) {
+                            continue;
+                        }
+                    } else if (currentVulnerabilitie.ID !== undefined) {
+                        if (false_positives_list.includes(currentVulnerabilitie.ID)) {
+                            continue;
+                        }
+                    }
+                }
+                // Finalizando tratamento para falso positivos
+
                 switch (currentVulnerabilitie.Severity) {
                     case 'UNKNOWN':
                         ++vulnerabilities.unknown;

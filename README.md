@@ -7,8 +7,8 @@ Esta é uma ferramenta interna criada para realizar o parse do resultado de rela
 
 ### Exemplos de uso da ferramenta
 ```sh
-trivy_result_parser --report-file=./report.json --low=20 [--option=number]
-trivy_result_parser --report-file=./report.json --low=20 --critical=0 [--option=number]
+trivy_result_parser --report-file=./report.json --low=20 [--option=number] --false_positives=CVE-123,KSV123
+trivy_result_parser --report-file=./report.json --low=20 --critical=0 [--option=number] --false_positives=CVE-123,KSV123
 ```
 
 **OPTIONS**:
@@ -16,15 +16,17 @@ trivy_result_parser --report-file=./report.json --low=20 --critical=0 [--option=
 ```sh
 --report-file   Path de um arquivo JSON contendo o report de vulnerabilidades gerado pelo Trivy. Podendo ser o report de vulnerabilidades de imagens docker ou reporte de vulnerabilidades de arquivos de configuração .YML | .YAML
 
---unknown       Número de vulnerabilidades do tipo unknown aceitas.
+--unknown           Número de vulnerabilidades do tipo unknown aceitas.
 
---low           Número de vulnerabilidades do tipo low aceitas.
+--low               Número de vulnerabilidades do tipo low aceitas.
 
---medium        Número de vulnerabilidades do tipo medium aceitas.
+--medium            Número de vulnerabilidades do tipo medium aceitas.
 
---high          Número de vulnerabilidades do tipo high aceitas.
+--high              Número de vulnerabilidades do tipo high aceitas.
 
---critical      Número de vulnerabilidades do tipo critical aceitas.
+--critical          Número de vulnerabilidades do tipo critical aceitas.
+
+--false_positives   Lista de falso positivos separados por virgulas. Deve conter o VulnerabilityID ou o MissConfiguration ID a ser considerado um falso positivo.
 ```
 
 

@@ -7,7 +7,7 @@
     "build": "pkg --compress GZip trivy_result_parser.js --out-path dist",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "gladson.santos-terceiro@cea.com.br",
+  "author": "gladsonbruno16@gmail.com",
   "license": "ISC",
   "dependencies": {
     "yargs": "^17.3.1"
